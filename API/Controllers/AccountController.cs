@@ -5,7 +5,6 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
@@ -30,7 +29,7 @@ namespace API.Controllers
 
             using var hmac = new HMACSHA512(); // using instruct to destroy this variable once is no longer used - that implement the IDisposible methode
 
-            var user = new AppUser
+            var user = new AppUser()
             {
                 UserName = registerDto.Username.ToLower(),
                 PasswordHash =  hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
